@@ -8,7 +8,7 @@ ${Admins-Password}=    crypt:yBWx2uZno29msP1/lG5dLTj/Y7A2QNpep5CIeZdXMQgiPQW5Yfv
 
 *** Test Cases ***
 Decrypt as Plugin
-    Open Browser      https://ehourapp.com/login.html
+    Open Browser      https://ehourapp.com/login.html        Chrome
     Input Text        username    andrejs.kuidins@1nce.com
     Input Password    password    ${Admins-Password}
     [Teardown]        Close Browser

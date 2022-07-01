@@ -9,7 +9,7 @@ Library           SeleniumLibrary        plugins=CryptoLibrary.Plugin
 
 *** Variables ***
 ${SERVER}         ehourapp.com
-${BROWSER}        Firefox
+${BROWSER}        Chrome
 ${DELAY}          0
 ${VALID USER}     andrejs.kuidins@1nce.com
 ${VALID PASSWORD}     crypt:yBWx2uZno29msP1/lG5dLTj/Y7A2QNpep5CIeZdXMQgiPQW5Yfvl/vQJtxRTXRS/ezt9IEUFD2hc4g==
