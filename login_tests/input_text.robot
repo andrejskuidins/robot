@@ -13,6 +13,10 @@ Valid Login
     Submit Credentials
     Welcome Page Should Be Open
 
+Get Time
+    ${month}    Get Time    format=month
+    Log To Console    ${month}
+
 Wait Until Page Contains Element    
     Wait Until Page Contains Element        //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[2]
 
