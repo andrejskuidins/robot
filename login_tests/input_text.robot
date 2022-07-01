@@ -23,7 +23,7 @@ Wait Until Page Contains Element
 
 
 Input Text
-    FOR   ${week}    IN RANGE    41    45
+    FOR   ${week}    IN RANGE    41    46
         Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
         Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
         FOR   ${day}    IN RANGE    2    7
@@ -42,4 +42,4 @@ Input Text
     # [Teardown]        Close Browser
 
 Click Month 
-    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[45]/div
+    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[46]/div
