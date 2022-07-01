@@ -14,53 +14,32 @@ Valid Login
     Welcome Page Should Be Open
 
 Get Time
-    ${month}    Get Time    format=month
+    ${month}    Get Time    format=%b
     Log To Console    ${month}
+
 
 Wait Until Page Contains Element    
     Wait Until Page Contains Element        //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[2]
 
-Scroll Element Into View
-    Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
 
 Input Text
-    FOR   ${i}    IN RANGE    2    7
-        ${contains}    Get Element Count    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]/input
-        IF    ${contains}
-            ${CLASS}    Get Element Attribute    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]/input    class
-            IF    '${CLASS}' == 'read-only'
-                Log To Console    ${CLASS}
-            ELSE
-                Click Element             //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]
-                Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]/input    8
+    FOR   ${week}    IN RANGE    41    45
+        Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
+        Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
+        FOR   ${day}    IN RANGE    2    7
+            ${contains}    Get Element Count    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input
+            IF    ${contains}
+                ${CLASS}    Get Element Attribute    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    class
+                IF    '${CLASS}' == 'read-only'
+                    Log To Console    ${CLASS}
+                ELSE
+                    Click Element             //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]
+                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    8
+                END
             END
         END
     END
     # [Teardown]        Close Browser
 
-Click Month
-    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[41]/div
-
-Scroll Element Into View 2
-    Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
-
-Input Text
-    FOR   ${i}    IN RANGE    2    7
-        ${contains}    Get Element Count    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]/input
-        IF    ${contains}
-            ${CLASS}    Get Element Attribute    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]/input    class
-            IF    '${CLASS}' == 'read-only'
-                Log To Console    ${CLASS}
-            ELSE
-                Click Element             //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]
-                Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${i}]/input    8
-            END
-        END
-    END
-    # [Teardown]        Close Browser
-
-Click Month
-    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[42]/div
-
-Scroll Element Into View 3
-    Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
+Click Month 
+    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[45]/div
