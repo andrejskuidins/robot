@@ -17,6 +17,10 @@ Wait Until Page Contains Element
     Wait Until Page Contains Element        //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[2]
 
 
+Execute JavaScript
+    ${week_number}    Execute JavaScript    currentDate = new Date(); startDate = new Date(currentDate.getFullYear(), 0, 1); var days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000)); var weekNumber = Math.ceil(days / 7); return weekNumber
+    Log To Console    ${week_number}
+
 Input Text
     FOR   ${week}    IN RANGE    41    46
         Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
