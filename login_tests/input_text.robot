@@ -20,9 +20,10 @@ Wait Until Page Contains Element
 Execute JavaScript
     ${week_number}    Execute JavaScript    currentDate = new Date(); startDate = new Date(currentDate.getFullYear(), 0, 1); var days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000)); var weekNumber = Math.ceil(days / 7); return weekNumber
     Log To Console    ${week_number}
+    Set Global Variable    ${week_number}
 
 Input Text
-    FOR   ${week}    IN RANGE    41    46
+    FOR   ${week}    IN RANGE    ${week_number}+14    ${week_number}+19
         Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
         Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
         FOR   ${day}    IN RANGE    2    7
@@ -33,7 +34,7 @@ Input Text
                     Log To Console    ${CLASS}
                 ELSE
                     Click Element             //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]
-                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    0
+                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    8
                 END
             END
         END
