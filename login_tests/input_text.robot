@@ -14,8 +14,7 @@ Valid Login
     Welcome Page Should Be Open
 
 Wait Until Page Contains Element    
-    Wait Until Page Contains Element        //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[2]
-
+    Wait Until Page Contains Element        //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
 
 Execute JavaScript
     ${week_number}    Execute JavaScript    currentDate = new Date(); startDate = new Date(currentDate.getFullYear(), 0, 1); var days = Math.floor((currentDate - startDate) / (24 * 60 * 60 * 1000)); var weekNumber = Math.ceil(days / 7); return weekNumber
@@ -27,8 +26,16 @@ Set Selenium Speed
 
 Input Text
     FOR   ${week}    IN RANGE    ${week_number}+14    ${week_number}+19
+        Wait Until Page Contains Element    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
         Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
-        Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
+        TRY
+            Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
+        EXCEPT  StaleElementReferenceException
+            Reload Page
+            Wait Until Page Contains Element    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
+            Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
+            Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
+        END
         FOR   ${day}    IN RANGE    2    7
             ${contains}    Get Element Count    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input
             IF    ${contains}
@@ -37,12 +44,12 @@ Input Text
                     Log To Console    ${CLASS}
                 ELSE
                     Click Element             //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]
-                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    0
+                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    8
                 END
             END
         END
     END
 
 Click Month 
-    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[46]/div
+    Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week_number}+19]/div
     #[Teardown]        Close Browser
