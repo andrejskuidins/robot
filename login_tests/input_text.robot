@@ -42,7 +42,7 @@ Input Text
             END
         END
     END
-    # [Teardown]        Close Browser
 
 Click Month 
     Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[46]/div
+    #[Teardown]        Close Browser
