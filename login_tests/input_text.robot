@@ -22,6 +22,9 @@ Execute JavaScript
     Log To Console    ${week_number}
     Set Global Variable    ${week_number}
 
+Set Selenium Speed
+    Set Selenium Speed    0.1
+
 Input Text
     FOR   ${week}    IN RANGE    ${week_number}+14    ${week_number}+19
         Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
