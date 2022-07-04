@@ -34,7 +34,7 @@ Input Text
                     Log To Console    ${CLASS}
                 ELSE
                     Click Element             //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]
-                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    8
+                    Input Text                //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[${day}]/input    0
                 END
             END
         END
