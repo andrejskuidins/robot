@@ -52,4 +52,4 @@ Input Text
 
 Click Month 
     Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week_number}+19]/div
-    #[Teardown]        Close Browser
+    [Teardown]        Close Browser
