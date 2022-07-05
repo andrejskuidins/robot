@@ -26,11 +26,17 @@ Set Selenium Speed
 
 Input Text
     FOR   ${week}    IN RANGE    ${week_number}+14    ${week_number}+19
-        Wait Until Page Contains Element    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
         Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
+        Sleep    5
+        Wait Until Page Contains Element    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
         TRY
             Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
-        EXCEPT  StaleElementReferenceException
+        EXCEPT    element is not attached to the page document
+            Reload Page
+            Wait Until Page Contains Element    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
+            Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
+            Scroll Element Into View            //html/body/div[1]/div[3]/div/div[3]/div[2]/div[24]/div[2]
+        EXCEPT    element not interactable
             Reload Page
             Wait Until Page Contains Element    //html/body/div[1]/div[3]/div/div[3]/div[2]/div[16]/div[1]/div/div/div
             Click Element                //html/body/div[1]/div[2]/div/div[2]/div/div/div/div[${week}]/div
